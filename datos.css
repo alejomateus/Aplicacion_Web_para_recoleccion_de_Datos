@@ -1,0 +1,40 @@
+.div-actualizar{
+    max-width: 400px;
+    min-width: 400px;
+    margin: 0 auto;
+    padding:5px;
+}
+.h2{
+    color:#808080;
+    font-size:30px;
+    font-weight:bold;
+}
+    .caja{
+    margin: 0 auto;
+    color:#808080;
+    font-family: "Helvetica";
+    font-size: larger;
+    max-width: 400px;
+    min-width: 400px;
+    }
+    label{
+        font-size: 17px;
+    }
+    .linea{
+    max-width: 600px;
+    min-width: 600px;
+        border-top: 2px solid #808080;
+         margin: 0 auto;
+    }
+    
+    .lineas{
+    max-width: 600px;
+    min-width: 600px;
+        border-top: 2px solid #808080;
+         margin: 0 auto;
+    }label.validacion2{
+    color:red;
+}
+label.confirmacion{
+    color:#009900;
+}

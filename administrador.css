@@ -1,0 +1,110 @@
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+body{  
+   height: 100%;    
+   min-width: 600px;
+}
+input[type="text"] {
+    height: 30px;
+}
+.H1Data{
+        font-weight: normal;
+	font-family: "Helvetica Neue";
+	font-size:35px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background: url("imagenes/FondoNegro.png");
+        background-size: 3%;
+        border-radius: 5px;
+        margin: 0 auto;
+	text-align: center;
+	color:#ffffff;
+        min-width: 500px;
+        max-width: 600px;
+        height:70px;
+        line-height: 50px;
+}
+.sesion{
+    background: #000;
+    color:#fff;
+    font-family:"Times New Roman";
+    font-size: 14px;
+    text-align: right;
+}
+.footer{
+    height:120px;
+    padding-top: 15px;
+    font-family: "Source Sans Pro", sans-serif;
+    background: url("imagenes/FondoNegro.png");
+    background-size: 100%;
+    text-align:center;
+    position: relative;
+    color:#fff;
+}
+.linea {
+    width: 600px;
+    border-top: 2px solid #808080;
+    margin: 0 auto;
+}
+.container{
+          padding:0px;
+          }
+p.he1{
+	font-family: "Source Sans Pro", sans-serif;
+        font-size: 3.5em;
+	line-height: 1.5em;
+	letter-spacing: -0.035em;
+	text-align: center;
+        color:black;
+}
+p.mensaje{
+    text-align: center;
+    font-size: 25px;
+    color:black;
+    line-height: 32px;
+    font-family:"Helvetica Neue";
+    margin: 0 0 2em 0;
+}
+
+div.body_wrapper {
+	background: url("imagenes/fondo2.jpg");
+        min-width: 750px;
+}
+
+div.body{
+        min-width: 750px;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        width: 90%;
+        min-height: 433px ; 
+        max-height: auto;
+	left:100px;
+	text-align: center;
+	right: 100px;
+        background: white;
+        padding: 0 20px;
+        border: 5px;
+        border-style: ridge;
+        border-color: #46494B; 
+}
+
+p.texto-contenedor-2{
+	background: grey;
+	position:absolute;
+	text-align: center;
+	border-radius: 10px;
+}
+
+input[type="text"] {
+    height: 30px;
+}
+
+lined{
+         border:solid 7px #41403E;
+}
+

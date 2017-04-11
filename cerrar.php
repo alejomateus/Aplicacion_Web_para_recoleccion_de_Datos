@@ -1,0 +1,20 @@
+<?php
+session_start();
+        session_destroy();
+        header('location:index.php');
+        ?>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="usuarios">
+            <script> 
+             </script>
+            <?php
+session_start();
+        session_destroy();
+        header('location:index.php');
+        ?>
+        </div>
+    </body>
+</html>

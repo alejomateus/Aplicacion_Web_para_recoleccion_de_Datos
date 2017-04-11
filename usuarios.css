@@ -1,0 +1,22 @@
+@charset "utf-8";
+div.enlin{
+    display: inline;
+    text-align: center;}
+
+label.validacion{
+    font-size: 12px;
+    color:red;
+}
+label.validacion2{
+    color:red;
+}
+tr.bordes_n{
+    background: #666666;
+    color: #fff;
+}
+tr{
+    text-align: center;
+}
+input[type="text"] {
+    height: 30px;
+}

@@ -1,0 +1,133 @@
+
+Create table usuario (
+usur_nombre varchar(50) not null primary key,
+usur_clave varchar(50) not null ,
+usur_nombre_persona varchar (75) not null,
+usur_tipo varchar (20) not null,
+usur_clave_recup varchar (50) not null
+);
+
+create table encuesta(
+nombre_encuesta  varchar (50) not null primary key,
+estado_encuesta varchar (50) not null
+);
+
+create table encuesta_usuario(
+nombre_encuesta  varchar (50) not null,
+usur_nombre  varchar (50) not null,
+foreign key (nombre_encuesta) references encuesta (nombre_encuesta)
+on update cascade
+on delete cascade,
+foreign key (usur_nombre) references usuario (usur_nombre)
+on update cascade
+on delete cascade
+); 
+create table grilla(
+numero_grilla varchar(50) not null primary key ,
+tipo_grilla varchar(30) not null,
+nombre_encuesta  varchar (50) not null,
+foreign key (nombre_encuesta) references encuesta (nombre_encuesta)
+on update cascade
+on delete cascade
+);
+ 
+create table filas_grilla(
+contador_opcion int not null,
+numero_fila_grilla varchar(50) not null primary key ,
+nombre_fila_grilla varchar(150) not null ,
+numero_grilla varchar(50) not null,
+foreign key (numero_grilla) references grilla(numero_grilla)
+on update cascade
+on delete cascade
+);
+
+create table columnas_grilla(
+contador_opcion int not null,
+numero_columnas_grilla varchar(50) not null primary key ,
+nombre_columnas_grilla varchar(150) not null ,
+numero_grilla varchar(50) not null,
+foreign key (numero_grilla) references grilla(numero_grilla)
+on update cascade
+on delete cascade
+);
+
+CREATE TABLE pregunta(
+numero_pregunta varchar(50) PRIMARY KEY,
+nombre_pregunta VARCHAR( 400 ) NOT NULL ,
+tipo_pregunta VARCHAR( 30 ) NOT NULL ,
+video_imagen_pregunta VARCHAR( 150 ) NULL ,
+nombre_encuesta VARCHAR( 50 ) NOT NULL ,
+numero_grilla varchar(50) null,
+FOREIGN KEY ( nombre_encuesta ) REFERENCES encuesta( nombre_encuesta )
+on update cascade on delete cascade,
+FOREIGN KEY ( numero_grilla ) REFERENCES grilla( numero_grilla )
+on update cascade
+on delete cascade
+);
+
+CREATE TABLE guia_pregunta(
+id_guia_pregunta int not null,
+numero_pregunta VARCHAR( 50) NOT NULL ,
+nombre_encuesta VARCHAR( 50 ) NOT NULL ,
+FOREIGN KEY ( numero_pregunta ) REFERENCES pregunta( numero_pregunta ) 
+on update cascade on delete cascade,
+FOREIGN KEY ( nombre_encuesta ) REFERENCES encuesta( nombre_encuesta ) 
+on update cascade
+on delete cascade
+);
+
+CREATE TABLE opcion(
+contador_opcion int not null,
+numero_opcion varchar(50) PRIMARY KEY,
+nombre_opcion varchar(150) not null,
+numero_pregunta varchar(50) not null,
+nombre_encuesta  varchar (50) not null,
+FOREIGN KEY ( numero_pregunta ) REFERENCES pregunta( numero_pregunta )on update cascade
+on delete cascade ,
+foreign key (nombre_encuesta) references encuesta (nombre_encuesta)
+on update cascade
+on delete cascade
+);
+
+create table cantidad_encuestas(
+numero_encuesta varchar(50) PRIMARY KEY,
+nombre_encuesta varchar (50) not null,
+foreign key (nombre_encuesta) references encuesta (nombre_encuesta)
+on update cascade
+on delete cascade
+);
+
+create table datos(
+numero_encuesta varchar(50) not null,
+nombre_encuesta varchar (50) not null,
+numero_pregunta varchar (50) not null,
+numero_opcion varchar (300) not null,
+foreign key (numero_encuesta) references cantidad_encuestas (numero_encuesta)
+on update cascade
+on delete cascade,
+foreign key (nombre_encuesta ) references encuesta (nombre_encuesta)
+on update cascade
+on delete cascade,
+foreign key (numero_pregunta ) references pregunta (numero_pregunta )
+on update cascade
+on delete cascade
+);
+
+create view total1 as
+SELECT e.nombre_encuesta as 'encuesta',e.estado_encuesta as 'estado',(select COUNT( * ) 
+from cantidad_encuestas en
+WHERE (
+en.nombre_encuesta = e.nombre_encuesta
+))  as 'cantidad' FROM encuesta e;
+
+create view  disponible as
+select e.usur_nombre as 'usuario',e.usur_nombre_persona as 'nombre', 
+(select count(*) from encuesta_usuario en where (
+en.usur_nombre=e.usur_nombre )) as 'numero' from usuario e where e.usur_tipo ='Encuestador';
+
+insert into usuario values ('alejandro.mateus@dataplus.com.co','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Alejandro Jimenez Mateus','Administrador','40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+insert into usuario values ('harold.lopez@dataplus.com.co','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Harold Jhovany Lopez','Administrador','40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+insert into usuario values ('andres.tocasuche@dataplus.com.co','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Andres Tocasuche','Administrador','40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+insert into usuario values ('mario.fonseca@dataplus.com.co','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Mario Fonseca','Administrador','40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+
+select * from usuario where usur_nombre='alejo' and (usur_nombre_persona ='Alejandro Jimenez Mateus' or usur_tipo='Administrador')
